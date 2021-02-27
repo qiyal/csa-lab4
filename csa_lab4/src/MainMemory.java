@@ -9,6 +9,17 @@ public class MainMemory {
         this.n = n;
         this.m = m;
         this.memory = new Color[n][m];
+        init();
+    }
+
+    public void init() {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+//                System.out.println("i: " + i + "\t" + "j: " + j);
+                memory[i][j] = new Color();
+                memory[i][j].yellow = 1;
+            }
+        }
     }
 
     // Getters

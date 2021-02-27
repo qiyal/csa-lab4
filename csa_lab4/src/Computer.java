@@ -53,19 +53,16 @@ public class Computer implements IAlgorithm {
 
     @Override
     public void algorithmOne() {
+        for(int i = 0; i < mainMemory.getN(); i++) {
+            for (int j = 0; j < mainMemory.getM(); j++) {
 
+            }
+        }
     }
 
     @Override
     public void algorithmTwo() {
-        for(int i = 0; i < mainMemory.getN(); i++) {
-            for(int j = 0; j < mainMemory.getM(); j++) {
-                mainMemory.memory[j][i].cyan = 0;
-                mainMemory.memory[j][i].magenta = 0;
-                mainMemory.memory[j][i].yellow = 1;
-                mainMemory.memory[j][i].black = 0;
-            }
-        }
+
     }
 
     @Override

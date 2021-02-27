@@ -5,4 +5,14 @@ public class Color {
     public int black;
 
     public Color() {}
+
+    @Override
+    public String toString() {
+        return "Color[" +
+                "cyan=" + cyan +
+                ", magenta=" + magenta +
+                ", yellow=" + yellow +
+                ", black=" + black +
+                ']';
+    }
 }

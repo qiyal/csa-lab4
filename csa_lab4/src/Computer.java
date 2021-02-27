@@ -53,9 +53,19 @@ public class Computer implements IAlgorithm {
 
     @Override
     public void algorithmOne() {
+        int a = 0;
+        int hitCounter = 0;
+        int missCounter = 0;
+        int accept = 0;
+
         for(int i = 0; i < mainMemory.getN(); i++) {
             for (int j = 0; j < mainMemory.getM(); j++) {
 
+                if(a < cache.getK()) {
+                    if (mainMemory.memory[i][j] == cache.cacheMemory[a]) {
+                        
+                    }
+                }
             }
         }
     }

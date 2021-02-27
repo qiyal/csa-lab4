@@ -15,4 +15,8 @@ public class Cache {
             cacheMemory[i] = new Color();
         }
     }
+
+    public int getK() {
+        return k;
+    }
 }

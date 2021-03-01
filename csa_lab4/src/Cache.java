@@ -10,13 +10,13 @@ public class Cache {
         init();
     }
 
+    public int getK() {
+        return k;
+    }
+
     public void init() {
         for (int i = 0; i < k; i++) {
             cacheMemory[i] = new Color();
         }
-    }
-
-    public int getK() {
-        return k;
     }
 }

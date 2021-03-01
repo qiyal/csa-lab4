@@ -47,23 +47,27 @@ public class Computer implements IAlgorithm {
         if(x <= 0)
             return false;
 
-        while (x % 2 == 0) {
+        while (x % 2 == 0)
             x /= 2;
-        }
 
         return x == 1;
     }
 
     public void cacheFill(int i, int j) {
+//        System.out.println("\t\t\t\tcache fill start: " + i + " " + j);
         int index = 0;
+
         for( ; i < mainMemory.getN(); i++) {
             for( ; j < mainMemory.getM(); j++) {
                 if (index == cache.cacheMemory.length) {
                     break;
                 }
+//                System.out.println("\t\t\t\ti: " + i + " " + "j: " + j);
                 cache.cacheMemory[index++] = mainMemory.memory[i][j];
             }
+            j = 0;
         }
+//        System.out.println("\t\t\t\tstop cache fill");
     }
 
     private void showResult(int hit, int miss, int access) {
@@ -82,23 +86,32 @@ public class Computer implements IAlgorithm {
         int missCounter = 0;
         int accessCounter = 0;
 
+//        System.out.println("algorithmOne");
         for(int i = 0; i < mainMemory.getN(); i++) {
             for (int j = 0; j < mainMemory.getM(); j++) {
+//                System.out.println("\ti: " + i + " " + "j: " + j);
+
                 if(index < cache.getK()) {
+//                    System.out.println("\t\tindex < cace.getK()" + " " + index + "  " + cache.getK());
+
                     if (mainMemory.memory[i][j] != cache.cacheMemory[index]) {
+//                        System.out.println("\t\t\t =!");
                         missCounter++;
-                        hitCounter += 3;
                         cacheFill(i, j);
+                        hitCounter += 3;
+                        index = 0;
                     } else {
+//                        System.out.println("\t\t\t ==");
                         hitCounter += 4;
                     }
-                    index++;
                 } else {
+//                    System.out.println("\t\tNO index < cace.getK()" + " " + index + "  " + cache.getK());
                     missCounter++;
-                    hitCounter += 3;
                     cacheFill(i, j);
-                    index = 1;
+                    hitCounter += 3;
+                    index = 0;
                 }
+                index++;
                 accessCounter += 4;
             }
         }
@@ -114,24 +127,32 @@ public class Computer implements IAlgorithm {
         int missCounter = 0;
         int accessCounter = 0;
 
+//        System.out.println("algorithmTwo");
         for(int i = 0; i < mainMemory.getM(); i++) {
             for (int j = 0; j < mainMemory.getN(); j++) {
+//                System.out.println("\ti: " + j + " " + "j: " + i);
 
                 if(index < cache.getK()) {
+//                    System.out.println("\t\tindex < cace.getK()" + " " + index + "  " + cache.getK());
+
                     if (mainMemory.memory[j][i] != cache.cacheMemory[index]) {
+//                        System.out.println("\t\t\t =!");
                         missCounter++;
+                        cacheFill(j, i);
                         hitCounter += 3;
-                        cacheFill(i, j);
+                        index = 0;
                     } else {
+//                        System.out.println("\t\t\t ==");
                         hitCounter += 4;
                     }
-                    index++;
                 } else {
+//                    System.out.println("\t\tNO index < cace.getK()" + " " + index + "  " + cache.getK());
                     missCounter++;
-                    hitCounter += 3;
                     cacheFill(j, i);
-                    index = 1;
+                    hitCounter += 3;
+                    index = 0;
                 }
+                index++;
                 accessCounter += 4;
             }
         }
@@ -147,42 +168,62 @@ public class Computer implements IAlgorithm {
         int missCounter = 0;
         int accessCounter = 0;
 
+//        System.out.println("algorithmTwo part1");
         for(int i = 0; i < mainMemory.getN(); i++) {
             for (int j = 0; j < mainMemory.getM(); j++) {
+//                System.out.println("\ti: " + i + " " + "j: " + j);
+
                 if(index < cache.getK()) {
+//                    System.out.println("\t\tindex < cace.getK()" + " " + index + "  " + cache.getK());
+
                     if (mainMemory.memory[i][j] != cache.cacheMemory[index]) {
+//                        System.out.println("\t\t\t =!");
                         missCounter++;
                         cacheFill(i, j);
+                        index = 0;
                     } else {
+//                        System.out.println("\t\t\t ==");
                         hitCounter++;
                     }
-                    index++;
                 } else {
+//                    System.out.println("\t\tNO index < cace.getK()" + " " + index + "  " + cache.getK());
                     missCounter++;
                     cacheFill(i, j);
-                    index = 1;
+                    index = 0;
                 }
+                index++;
                 accessCounter++;
             }
         }
 
+        index = 0;
+
+//        System.out.println("\nalgorithmTwo part2");
         for(int i = 0; i < mainMemory.getN(); i++) {
             for (int j = 0; j < mainMemory.getM(); j++) {
+//                System.out.println("\ti: " + i + " " + "j: " + j);
+
                 if(index < cache.getK()) {
+//                    System.out.println("\t\tindex < cace.getK()" + " " + index + "  " + cache.getK());
+
                     if (mainMemory.memory[i][j] != cache.cacheMemory[index]) {
+//                        System.out.println("\t\t\t =!");
                         missCounter++;
-                        hitCounter += 2;
                         cacheFill(i, j);
+                        hitCounter += 2;
+                        index = 0;
                     } else {
+//                        System.out.println("\t\t\t ==");
                         hitCounter += 3;
                     }
-                    index++;
                 } else {
+//                    System.out.println("\t\tNO index < cace.getK()" + " " + index + "  " + cache.getK());
                     missCounter++;
-                    hitCounter += 2;
                     cacheFill(i, j);
-                    index = 1;
+                    hitCounter += 2;
+                    index = 0;
                 }
+                index++;
                 accessCounter += 3;
             }
         }

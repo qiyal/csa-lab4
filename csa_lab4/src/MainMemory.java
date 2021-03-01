@@ -12,6 +12,14 @@ public class MainMemory {
         init();
     }
 
+    public int getN() {
+        return n;
+    }
+
+    public int getM() {
+        return m;
+    }
+
     public void init() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -19,14 +27,5 @@ public class MainMemory {
                 memory[i][j].yellow = 1;
             }
         }
-    }
-
-    // Getters
-    public int getN() {
-        return n;
-    }
-
-    public int getM() {
-        return m;
     }
 }
